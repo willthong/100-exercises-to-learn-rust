@@ -2,8 +2,8 @@
 // Check Cargo's documentation to find out the right syntax:
 // https://doc.rust-lang.org/cargo/reference/profiles.html
 //
-// For reasons that we'll explain later, the customization needs to be done in the `Cargo.toml`
-// at the root of the repository, not in the `Cargo.toml` of the exercise.
+// For reasons that we'll explain later, the customization needs to be done in the 
+// `Cargo.toml` at the root of the repository, not in the `Cargo.toml` of the exercise.
 
 pub fn factorial(n: u32) -> u32 {
     let mut result = 1;
