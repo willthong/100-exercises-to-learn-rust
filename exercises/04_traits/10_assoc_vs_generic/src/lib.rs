@@ -1,7 +1,43 @@
 // TODO: Define a new trait, `Power`, that has a method `power` that raises `self`
-//  to the power of `n`.
-//  The trait definition and its implementations should be enough to get
-//  the tests to compile and pass.
+// to the power of `n`.
+// The trait definition and its implementations should be enough to get
+// the tests to compile and pass.
+
+pub trait Power<T> {
+    fn power(self, exponent: T) -> u32;
+}
+
+impl Power<u16> for u32 {
+    fn power(self: u32, exponent: u16) -> u32 {
+        let mut result: u32 = 1;
+        for _ in  0..exponent {
+            result = self * result; 
+        }
+        result
+    }
+}
+
+
+impl Power<u32> for u32 {
+    fn power(self: u32, exponent: u32) -> u32 {
+        let mut result: u32 = 1;
+        for _ in  0..exponent {
+            result = self * result 
+        }
+        result
+    }
+}
+
+impl Power<&u32> for u32 {
+    fn power(self: u32, exponent: &u32) -> u32 {
+        let mut result: u32 = 1;
+        for _ in  0..*exponent {
+            result = self * result;
+        }
+        result
+    }
+}
+
 //
 // Recommendation: you may be tempted to write a generic implementation to handle
 // all cases at once. However, this is fairly complicated and requires the use of
@@ -34,4 +70,17 @@ mod tests {
         let x: u32 = 2_u32.power(&3u32);
         assert_eq!(x, 8);
     }
+
+    #[test]
+    fn test_power_different_sum() {
+        let x: u32 = 3_u32.power(&8u32);
+        assert_eq!(x, 6561);
+    }
+
+    #[test]
+    fn test_power_zero() {
+        let x: u32 = 5_u32.power(0u32);
+        assert_eq!(x, 1);
+    }
+
 }
